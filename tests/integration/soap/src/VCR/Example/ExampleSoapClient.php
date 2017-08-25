@@ -4,17 +4,25 @@ namespace VCR\Example;
 /**
  * Converts temperature units from webservicex
  *
- * @link http://www.webservicex.net/New/Home/ServiceDetail/31
+ * @link http://www.dneonline.com/calculator.asmx
  */
 class ExampleSoapClient
 {
-    const EXAMPLE_WSDL = 'http://www.webservicex.net/ConvertTemperature.asmx?WSDL';
+    const EXAMPLE_WSDL = 'http://www.dneonline.com/calculator.asmx?WSDL';
 
-    public function call($zip = '10')
+    public function call($intA, $intB)
     {
         $client = new \SoapClient(self::EXAMPLE_WSDL, array('soap_version' => SOAP_1_2));
-        $response = $client->ConvertTemp(array('Temperature' => $zip, 'FromUnit' => 'degreeCelsius', 'ToUnit' => 'degreeFahrenheit'));
+        $response = $client->Add(array('intA' => $intA, 'intB' => $intB));
 
-        return (int) $response->ConvertTempResult;
+        return (int) $response->AddResult;
+    }
+
+    public function invalidCall($intA, $intB)
+    {
+        $client = new \SoapClient(self::EXAMPLE_WSDL, array('soap_version' => SOAP_1_2));
+        $response = $client->Divide(array('intA' => $intA, 'intB' => $intB));
+
+        return (int) $response->AddResult;
     }
 }
