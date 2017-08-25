@@ -4,15 +4,16 @@ namespace VCR\Example;
 
 
 use Exception;
+use PHPUnit\Framework\TestCase;
 use VCR\VCR;
 
-class PreRecordedCalculatorSoapClientTest extends \PHPUnit_Framework_TestCase
+class PreRecordedCalculatorSoapClientTest extends TestCase
 {
 
     public function setUp()
     {
         // Configure virtual filesystem.
-        VCR::configure()->setCassettePath('../');
+        VCR::configure()->setCassettePath('../../fixtures/');
         VCR::configure()->setMode(VCR::MODE_NONE);
         VCR::turnOn();
         VCR::insertCassette('test-cassette.yml');

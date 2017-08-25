@@ -4,6 +4,7 @@ namespace VCR\Example;
 
 use Exception;
 use org\bovigo\vfs\vfsStream;
+use PHPUnit\Framework\TestCase;
 use VCR\VCR;
 
 /**
@@ -11,13 +12,12 @@ use VCR\VCR;
  *
  * @link http://www.dneonline.com/calculator.asmx
  */
-class RecordCalculatorSoapClientTest extends \PHPUnit_Framework_TestCase
+class RecordCalculatorSoapClientTest extends TestCase
 {
     public function setUp()
     {
         // Configure virtual filesystem.
-        vfsStream::setup('testDir');
-        VCR::configure()->setCassettePath('../');
+        VCR::configure()->setCassettePath('../../fixtures/');
         VCR::configure()->setMode(VCR::MODE_NEW_EPISODES);
         VCR::turnOn();
         VCR::insertCassette('test-cassette.yml');
