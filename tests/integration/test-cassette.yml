@@ -1,0 +1,45 @@
+
+-
+    request:
+        method: POST
+        url: 'http://www.dneonline.com/calculator.asmx'
+        headers:
+            Host: www.dneonline.com
+            Content-Type: 'application/soap+xml; charset=utf-8; action="http://tempuri.org/Add"'
+        body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<env:Envelope xmlns:env=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:ns1=\"http://tempuri.org/\"><env:Body><ns1:Add><ns1:intA>100</ns1:intA><ns1:intB>200</ns1:intB></ns1:Add></env:Body></env:Envelope>\n"
+    response:
+        status:
+            http_version: '1.1'
+            code: '200'
+            message: OK
+        headers:
+            Cache-Control: 'private, max-age=0'
+            Content-Length: '325'
+            Content-Type: 'application/soap+xml; charset=utf-8'
+            Server: Microsoft-IIS/7.5
+            X-AspNet-Version: 2.0.50727
+            X-Powered-By: ASP.NET
+            Date: 'Fri, 25 Aug 2017 10:08:36 GMT'
+        body: '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><AddResponse xmlns="http://tempuri.org/"><AddResult>300</AddResult></AddResponse></soap:Body></soap:Envelope>'
+-
+    request:
+        method: POST
+        url: 'http://www.dneonline.com/calculator.asmx'
+        headers:
+            Host: www.dneonline.com
+            Content-Type: 'application/soap+xml; charset=utf-8; action="http://tempuri.org/Divide"'
+        body: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<env:Envelope xmlns:env=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:ns1=\"http://tempuri.org/\"><env:Body><ns1:Divide><ns1:intA>5</ns1:intA><ns1:intB>0</ns1:intB></ns1:Divide></env:Body></env:Envelope>\n"
+    response:
+        status:
+            http_version: '1.1'
+            code: '500'
+            message: 'Internal Server Error'
+        headers:
+            Cache-Control: private
+            Content-Length: '667'
+            Content-Type: 'application/soap+xml; charset=utf-8'
+            Server: Microsoft-IIS/7.5
+            X-AspNet-Version: 2.0.50727
+            X-Powered-By: ASP.NET
+            Date: 'Fri, 25 Aug 2017 10:08:37 GMT'
+        body: "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><soap:Fault><soap:Code><soap:Value>soap:Receiver</soap:Value></soap:Code><soap:Reason><soap:Text xml:lang=\"en\">System.Web.Services.Protocols.SoapException: Server was unable to process request. ---&gt; System.OverflowException: Arithmetic operation resulted in an overflow.\r\n   at Calculator.Divide(Int32 intA, Int32 intB)\r\n   --- End of inner exception stack trace ---</soap:Text></soap:Reason><soap:Detail /></soap:Fault></soap:Body></soap:Envelope>"
